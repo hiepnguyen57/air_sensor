@@ -155,52 +155,52 @@ class AirGradient
 {
   // user-accessible "public" interface
   public:
-    AirGradient(bool displayMsg=false,int baudRate=9600);
-    //void begin(int baudRate=9600);
+   AirGradient(bool displayMsg = false,
+               int baudRate = 9600);
+   // void begin(int baudRate=9600);
 
-    static void setOutput(Print& debugOut, bool verbose = true);
+   static void setOutput(Print& debugOut, bool verbose = true);
 
-    void beginCO2(void);
-    void beginCO2(int,int);
-    void PMS_Init(void);
-    void PMS_Init(int,int);
-    void PMS_Init(int,int,int);
+   void beginCO2(void);
+   void beginCO2(int, int);
+   void PMS_Init(void);
+   void PMS_Init(int, int);
+   void PMS_Init(int, int, int);
 
-    bool _debugMsg;
+   bool _debugMsg;
 
+   // PMS VARIABLES PUBLIC_START
+   static const uint16_t SINGLE_RESPONSE_TIME = 1000;
+   static const uint16_t TOTAL_RESPONSE_TIME = 1000 * 10;
+   static const uint16_t STEADY_RESPONSE_TIME = 1000 * 30;
 
-    //PMS VARIABLES PUBLIC_START
-    static const uint16_t SINGLE_RESPONSE_TIME = 1000;
-    static const uint16_t TOTAL_RESPONSE_TIME = 1000 * 10;
-    static const uint16_t STEADY_RESPONSE_TIME = 1000 * 30;
+   static const uint16_t BAUD_RATE = 9600;
 
-    static const uint16_t BAUD_RATE = 9600;
+   struct DATA {
+        // Standard Particles, CF=1
+        uint16_t PM_SP_UG_1_0;
+        uint16_t PM_SP_UG_2_5;
+        uint16_t PM_SP_UG_10_0;
 
-    struct DATA {
-      // Standard Particles, CF=1
-      uint16_t PM_SP_UG_1_0;
-      uint16_t PM_SP_UG_2_5;
-      uint16_t PM_SP_UG_10_0;
+        // Atmospheric environment
+        uint16_t PM_AE_UG_1_0;
+        uint16_t PM_AE_UG_2_5;
+        uint16_t PM_AE_UG_10_0;
 
-      // Atmospheric environment
-      uint16_t PM_AE_UG_1_0;
-      uint16_t PM_AE_UG_2_5;
-      uint16_t PM_AE_UG_10_0;
+        // Raw particles count (number of particles in 0.1l of air
+        uint16_t PM_RAW_0_3;
+        uint16_t PM_RAW_0_5;
+        uint16_t PM_RAW_1_0;
+        uint16_t PM_RAW_2_5;
+        uint16_t PM_RAW_5_0;
+        uint16_t PM_RAW_10_0;
 
-      // Raw particles count (number of particles in 0.1l of air
-      uint16_t PM_RAW_0_3;
-      uint16_t PM_RAW_0_5;
-      uint16_t PM_RAW_1_0;
-      uint16_t PM_RAW_2_5;
-      uint16_t PM_RAW_5_0;
-      uint16_t PM_RAW_10_0;
+        // Formaldehyde (HCHO) concentration in mg/m^3 - PMSxxxxST units only
+        uint16_t AMB_HCHO;
 
-      // Formaldehyde (HCHO) concentration in mg/m^3 - PMSxxxxST units only
-      uint16_t AMB_HCHO;
-
-      // Temperature & humidity - PMSxxxxST units only
-      int16_t PM_TMP;
-      uint16_t PM_HUM;
+        // Temperature & humidity - PMSxxxxST units only
+        int16_t PM_TMP;
+        uint16_t PM_HUM;
     };
 
     void PMS(Stream&);
@@ -233,7 +233,7 @@ class AirGradient
 
     //TMP_RH VARIABLES PUBLIC START
     void ClosedCube_TMP_RH();
-    TMP_RH_ErrorCode TMP_RH_Init(uint8_t address);
+    TMP_RH_ErrorCode TMP_RH_Init(uint8_t address, int PinSDA, int PinSCL);
     TMP_RH_ErrorCode clearAll();
 
      TMP_RH_ErrorCode softReset();

@@ -1,21 +1,23 @@
 // Setup for the ESP32 S3 with GC9A01 display
+#pragma once
+
+#include "../../include/board_conf.h"
+
 #define USER_SETUP_ID 70
 
 #define GC9A01_DRIVER
 
 // Display size
-#define TFT_WIDTH  240
-#define TFT_HEIGHT 240
+#define TFT_WIDTH  CONFIG_TFT_WIDTH
+#define TFT_HEIGHT CONFIG_TFT_HEIGHT
 
-// Typical board default pins - change to match your board
-#define TFT_SCLK 36 //     12 or 36 (FSPI CLK)
-#define TFT_MOSI 35 //     11 or 35 (FSPI D)
-#define TFT_CS 10   //     10 or 34 (FSPI CS0)
+#define TFT_SCLK CONFIG_TFT_PIN_SCLK
+#define TFT_MOSI CONFIG_TFT_PIN_MOSI
+#define TFT_CS CONFIG_TFT_PIN_CS
 
-// Use pins in range 0-31
-#define TFT_DC 4
-#define TFT_RST 5
-// #define TFT_BL -1
+#define TFT_DC CONFIG_TFT_PIN_DC
+#define TFT_RST CONFIG_TFT_PIN_RST
+// #define TFT_BL CONFIG_TFT_PIN_BL
 
 #define LOAD_GLCD
 #define LOAD_FONT2

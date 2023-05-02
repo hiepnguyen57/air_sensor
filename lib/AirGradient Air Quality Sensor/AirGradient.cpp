@@ -38,13 +38,9 @@ unsigned long lastRequest = 0;
 bool SerialConfigured = true;
 bool PwmConfigured = true;
 
-const int SHT30_SCL = 38;
-const int SHT30_SDA = 37;
-
-AirGradient::AirGradient(bool displayMsg,int baudRate)
-{
+AirGradient::AirGradient(bool displayMsg, int baudRate) {
   _debugMsg = displayMsg;
-  Wire.begin(SHT30_SDA, SHT30_SCL);
+  // Wire.begin();
   Serial.begin(baudRate);
    if (_debugMsg) {
     Serial.println("AirGradiant Library instantiated successfully.");
@@ -414,10 +410,13 @@ void AirGradient::loop()
 
 //START TMP_RH FUNCTIONS//
 
-TMP_RH_ErrorCode AirGradient::TMP_RH_Init(uint8_t address) {
+TMP_RH_ErrorCode AirGradient::TMP_RH_Init(uint8_t address,
+                                          int PinSDA, int PinSCL) {
   if (_debugMsg) {
     Serial.println("Initializing TMP_RH...");
-    }
+  }
+  
+  Wire.begin(PinSDA, PinSCL);
   TMP_RH_ErrorCode error = SHT3XD_NO_ERROR;
   _address = address;
   periodicStart(SHT3XD_REPEATABILITY_HIGH, SHT3XD_FREQUENCY_10HZ);

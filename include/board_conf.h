@@ -1,0 +1,20 @@
+#pragma once
+
+// LCD display
+#define CONFIG_TFT_WIDTH 240
+#define CONFIG_TFT_HEIGHT 240
+
+#define CONFIG_TFT_PIN_SCLK 36
+#define CONFIG_TFT_PIN_MOSI 35
+#define CONFIG_TFT_PIN_CS 10
+#define CONFIG_TFT_PIN_DC 4
+#define CONFIG_TFT_PIN_RST 5
+#define CONFIG_TFT_PIN_BL 15
+
+// CO2 sensors
+#define CONFIG_CO2_PIN_TX 6
+#define CONFIG_CO2_PIN_RX 7
+
+// CO2 sensors
+#define CONFIG_SHT30_PIN_SCL 38
+#define CONFIG_SHT30_PIN_SDA 37
