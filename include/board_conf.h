@@ -12,9 +12,13 @@
 #define CONFIG_TFT_PIN_BL 15
 
 // CO2 sensors
-#define CONFIG_CO2_PIN_TX 6
-#define CONFIG_CO2_PIN_RX 7
+#define CONFIG_CO2_PIN_TX 7
+#define CONFIG_CO2_PIN_RX 6
 
-// CO2 sensors
+// SHT30 sensors
 #define CONFIG_SHT30_PIN_SCL 38
 #define CONFIG_SHT30_PIN_SDA 37
+
+// PMS7003 sensors
+#define CONFIG_PMS_PIN_TX 18
+#define CONFIG_PMS_PIN_RX 8
